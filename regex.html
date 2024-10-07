@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="<KEY>" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        .icons{
+            margin:-30px;
+        }
+.span{
+    color:red;
+    display: none;
+}
+    </style>
+</head>
+
+<body>
+    <form onsubmit="return " id="main">
+        <label for="">name</label>
+        <input type="text" id="name" title="Fill your name"><br>
+        <!-- <span class="span" id="span">ghgf</span><br>      -->
+
+        <label for="">username</label>
+        <input type="text" id="username" title="Fill your username"><br>
+
+        <label for="">email</label>
+        <input type="text" id="email" title="Fill your email"><br>
+
+        <label for="">password</label>
+        <input type="text" id="password" title="First letter should be in Capital letter contain at least one number,one uppercase and lowercase letter, and at least 8 or more characters" required>
+
+        <icon class="icons"> <img src="C:\Users\nisha\Downloads\hide.png" style="width:20px;height:20px" onclick="icns()"> </icon><br>
+     
+
+        <button type="button" onclick="main()">submit</button>
+
+    </form>
+    <script>
+
+        // return name;
+        function main() {
+
+            let name = document.getElementById("name").value;
+            // alert(name)
+            let username = document.getElementById("username").value;
+            let email = document.getElementById('email').value;
+            let password = document.getElementById('password').value;
+            const namerex = /^[a-zA-Z]{3,20}$/;
+            const userrex = /^[a-zA-Z0-9]{3,20}$/;
+            const emailrex = /^[a-z]{1,10}[a-z0-9]{3,10}@[a-z]{4,5}\.[a-z]{2,3}$/;
+            const passwordrex = /^[A-Z][a-zA-Z0-9@$#%&*]{8,30}$/; 
+            console.log(namerex.test(name))
+            if(! namerex.test(name)){
+                // alert("name is not valid")
+                document.getElementById('span').style.display="block"
+                document.getElementById('name').focus()
+                return
+        }
+        if(!userrex.test(username)){
+            alert('username is not vaild')
+            document.getElementById('username').focus()
+            return 
+        }
+   
+    
+    if(!emailrex.test(email)){
+        alert('email invaild')
+        document.getElementById('email').focus()
+        return
+    }
+    if(!passwordrex.test(password)){
+        alert('Fill your password')
+        document.getElementById('password').focus()
+        return
+        }
+        
+
+    alert('valid')
+    return true;
+        }
+
+        function icns() {
+       var x = document.getElementById('password');
+        console.log(x)
+if (x.type === "password") {
+           x.type = "text"
+            exit();
+       } else {
+           x.type = "password"
+       }
+
+
+   }
+    </script>
+</body>
+
+</html>

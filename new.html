@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    Name: <input id="name" type="text"><br>
+    hindi: <input id="hindi" type="number"><br>
+    english: <input id="english" type="number"><br>
+    result: <p id="result"></p>
+    <button onclick="addition()">Addition</button>
+    click: <p id="otp"></p>
+    <button onclick="main()">Main</button>
+
+    <script>
+        // length
+        // trim
+        // left trim
+        // right trim
+        // concate
+        // toUpperCase
+        // toLowerCase
+        // let text = "Apple, Banana, Kiwi";
+        // let part = text.slice(7, 20);
+
+        let text = "Please visit Nishant!";
+        let newText = text.replace("Nishant", "Delhi");
+
+        console.log(newText);
+
+        let test = "This,is Java-script";
+
+        // console.log(test.toUpperCase())
+        console.log(test.concat(' tester'))
+        console.log(test+' tester')
+        console.log(test.split(','));
+        function addition(){
+            let name= document.getElementById('name').value;
+            
+
+            console.log(name.toLowerCase());
+            let hindi=parseInt(document.getElementById('hindi').value);
+            let english=parseInt(document.getElementById('english').value);
+            let total=(hindi)+(english);
+            document.getElementById('result').innerHTML=total;
+
+            function main(){
+                let rndm=Math.floor((Math.random()*1000)+1);
+                document.getElementById('otp').innerHTML=rndm;
+                console.log(rndm);
+            }
+        }
+    </script>
+</body>
+</html>

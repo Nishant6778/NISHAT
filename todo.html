@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+   #todolist{
+    list-style: none;
+   }
+    span{
+      color:red;
+      margin-left: 30px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <!-- <form> -->
+      <input type="text" id="item" autofocus>
+      <button onclick="main()">Add</button>
+  
+      <!-- </form> -->
+  </main>
+<ul id="todolist"></ul>
+
+
+  <script>
+    // var deleteButton = document.getElementById("todo")
+    function main(){
+     var todo= document.getElementById('item')
+     var result=todo.value;
+     var ul=document.getElementById('todolist');
+     
+     const li = document.createElement("li");
+     if(todo.value ===''){
+      alert('Enter a task');
+      return;
+     }
+     let x=prompt();
+     if(x!=null){
+     document.getElementById('todolist').innerHTML=x;
+     }
+     
+     
+      const deleteButton = document.createElement('span');
+     deleteButton.textContent = 'Delete';
+     deleteButton.addEventListener('click', function() {
+       li.remove()
+      //  li.removeChild(deleteButton)
+     });
+     
+
+     li.textContent=result;
+     ul.appendChild(li)
+     li.appendChild(deleteButton);
+     todo.value=''
+    //  alert('helo')
+    }
+    
+</script> 
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .balance {
+            display: none;
+        }
+
+        .withdraw {
+            display: none;
+        }
+
+        .deposit {
+            display: none;
+        }
+
+        .withdraws {
+            display: none;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        .deposits {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="pins">
+        PIN<input type="text" id="demo"><button onclick="main()">OK</button>
+    </div>
+
+    <button class="balance" id="balance" onclick="balance()">Balance</button>
+    <button class="withdraw" id="withdraw" onclick="withdraw()">withdraw</button>
+    <input type="text" id="show" class="withdraws">
+    <button class="balance" id="hide" onclick="withd()">withdraw</button>
+    <button class="deposit" id="deposit" onclick="deposit()">deposit</button>
+    <input type="text" id="sho" class="deposits">
+
+
+
+    <div id="atm"></div>
+    <script>
+        // const customer = {
+        //     id: 'CUST13323',
+        //     name:'John doe',
+        //     acc_no: '3939393939393',
+        //     balance:0
+        // }
+
+        // localStorage.setItem('bank',JSON.stringify(customer));
+        const customer = JSON.parse(localStorage.getItem('bank'));
+
+        let balances = Number(localStorage.getItem('balances'));
+        function main() {
+            let x = 1234;
+            console.log(x)
+
+            let y = document.getElementById('demo').value;
+            if (x == y) {
+                document.getElementById('balance').style.display = "block";
+                document.getElementById('withdraw').style.display = "block";
+                document.getElementById('deposit').style.display = "block";
+                document.getElementById('pins').style.display = "none";
+
+            } else {
+                document.getElementById('demo').focus();
+                alert('enter your pin')
+            }
+
+        }
+        function balance() {
+            document.getElementById('atm').innerHTML = "your balances" + balances;
+            // alert(balances)
+        }
+
+        function withdraw() {
+            // console.log(balances)
+            document.getElementById('show').style.display = "block";
+            document.getElementById('hide').style.display = "block";
+            document.getElementById('balance').style.display = "none";
+            document.getElementById('deposit').style.display = "none";
+
+            document.getElementById('withdraw').style.display = "none";
+
+            // let withdraw=document.getElementById('withdraw').value;
+
+        }
+
+        function withd() {
+
+            let withdraws = document.getElementById('show').value;
+            if (withdraws == 0) {
+                alert('please enter the amount')
+                document.getElementById('show').focus();
+                return false;
+            } else {
+                document.getElementById('balance').style.display = "none";
+            }
+            if (withdraws > balances) {
+                alert('insufficient balance')
+            } else {
+                balances = balances - withdraws
+                document.getElementById('atm').innerHTML = "your balances" + balances;
+
+                // alert('your balance is'+ balances)
+            }
+
+
+        }
+
+        //function deposits(){
+        //      document.getElementById('sho').value;
+        //    document.getElementById('balance').style.display = "block";
+        //}
+
+        function deposit() {
+            document.getElementById('sho').style.display = "block";
+
+            let depositAmount = Number(document.getElementById('sho').value);
+
+            customer.balance = customer.balance + depositAmount;
+
+            localStorage.setItem('bank', JSON.stringify(customer));
+        }
+    </script>
+</body>
+
+</html>
